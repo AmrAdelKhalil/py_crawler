@@ -15,6 +15,5 @@ services:
       POSTGRES_USER: 'docker'
       POSTGRES_PASSWORD: 'docker'
       POSTGRES_DB: 'youtube'
-    # command: ['psql', '-d', 'youtube', '-U', 'docker', '-f', 'init.sql']
     ports:
-      - "2345:5432"
+      - 5432
