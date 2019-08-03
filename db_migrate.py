@@ -5,10 +5,10 @@ from flask_script import Manager
 app = Flask(__name__)
 
 POSTGRES = {
-    'user': 'docker',
-    'pw': 'docker',
-    'db': 'youtube',
-    'host': 'postgresql',
+    'user': 'crawler',
+    'pw': '1234567',
+    'db': 'py_crawler',
+    'host': 'localhost',
     'port': '5432',
 }
 
@@ -30,4 +30,5 @@ manager.add_command('db', MigrateCommand)
 
 
 if __name__ == "__main__":
+	print('got here')
 	manager.run()
