@@ -38,4 +38,4 @@ def get_all_videos():
 
 if __name__ == "__main__":
 	run_cron()
-	app.run(host="0.0.0.0", debug=True,use_reloader=False)
+	app.run(host="0.0.0.0", debug=True, use_reloader=False)
