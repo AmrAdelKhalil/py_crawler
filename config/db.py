@@ -3,10 +3,10 @@ from flask import Flask
 app = Flask(__name__)
 
 POSTGRES = {
-    'user': 'crawler',
-    'pw': '1234567',
-    'db': 'py_crawler',
-    'host': 'localhost',
+    'user': 'docker',
+    'pw': 'docker',
+    'db': 'youtube',
+    'host': 'postgresql',
     'port': '5432',
 }
 

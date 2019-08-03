@@ -6,7 +6,7 @@ services:
     build: .
     image: python:2.7
     restart: 'always'
-    command: 'python db_migrate.py db init && python db_migrate.py db migrate && python db_migrate.py db upgrade && python app.py'
+    command: ['./wait-for-postgres.sh']
     ports:
       - "5000:5000"
     depends_on:
@@ -20,3 +20,4 @@ services:
       POSTGRES_DB: 'youtube'
     ports:
       - 5432
+      # , 'python', 'db_migrate.py', 'db', 'init', '&&', 'python', 'db_migrate.py', 'db', 'migrate', '&&', 'python', 'db_migrate.py', 'db', 'upgrade', '&&', 

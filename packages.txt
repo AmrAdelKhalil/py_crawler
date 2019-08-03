@@ -3,3 +3,4 @@ Flask-Migrate
 Flask-Script
 psycopg2
 requests
+python-crontab
