@@ -17,16 +17,8 @@ class Presistor:
 		for idx in range(len(self.items)):
 			new_record = Videos(video_url = 'https://www.youtube.com/watch?v=' + self.items[idx]['snippet']['resourceId']['videoId'],title = self.items[idx]['snippet']['title'], image = self.items[idx]['snippet']['thumbnails']['default']['url'], thumbnail = self.items[idx]['snippet']['thumbnails']['medium']['url'])
 			new_record = self.get_extra_data(new_record, self.items[idx]['snippet']['resourceId']['videoId'])
+			new_record.downloaded_thumbnail_path = ''
+			new_record.downloaded_image_path = ''
 			db.session.add(new_record)
 		
 		db.session.commit()
-
-
-	# url = 'https://i.ytimg.com/vi/GU3JqoUDkjA/mqdefault.jpg'
-	# file_name = 'test'
-	# full_path = 'images/' + file_name + '.jpg'
-	# response = urllib2.urlopen(url)
-	# fh = open(full_path, 'w')
-	# fh.write(response.read())
-	# fh.close()
-	# 

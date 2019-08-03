@@ -14,7 +14,7 @@ def get_url_formatted(url):
 		
 def load_images():
 
-	videos = Videos.query.filter(Videos.downloaded_thumbnail_path == None, Videos.downloaded_image_path == None).all()
+	videos = Videos.query.filter(Videos.downloaded_thumbnail_path == '', Videos.downloaded_image_path == '').all()
 
 	for idx in range(len(videos)):
 		
