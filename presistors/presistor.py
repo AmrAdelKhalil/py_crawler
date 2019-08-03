@@ -22,7 +22,7 @@ class Presistor:
 		db.session.commit()
 
 
-	# 	url = 'https://i.ytimg.com/vi/GU3JqoUDkjA/mqdefault.jpg'
+	# url = 'https://i.ytimg.com/vi/GU3JqoUDkjA/mqdefault.jpg'
 	# file_name = 'test'
 	# full_path = 'images/' + file_name + '.jpg'
 	# response = urllib2.urlopen(url)

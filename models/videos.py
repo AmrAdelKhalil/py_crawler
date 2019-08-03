@@ -10,4 +10,6 @@ class Videos(db.Model):
     views = db.Column(db.Integer)
     thumbnail = db.Column(db.String(128))
     image = db.Column(db.String(128))
+    downloaded_thumbnail_path = db.Column(db.String(128))
+    downloaded_image_path = db.Column(db.String(128))
     

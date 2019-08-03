@@ -7,6 +7,7 @@ from presistors.presistor import *
 from services.playlist_service import *
 from services.channel_service import *
 import urllib2
+from scheduleCron import run_cron
 
 @app.route('/')
 def hello():
@@ -32,8 +33,9 @@ def get_all_videos():
 	data = Videos.query.all()
 	response = []
  	for idx in range(len(data)):
- 		response += [{'id': data[idx].id, 'title': data[idx].title, 'duration': data[idx].duration, 'views': data[idx].views, 'url': data[idx].video_url, 'tumbnail': data[idx].thumbnail, 'full-sized-image': data[idx].image}]
+ 		response += [{'id': data[idx].id, 'title': data[idx].title, 'duration': data[idx].duration, 'views': data[idx].views, 'url': data[idx].video_url, 'tumbnail': data[idx].thumbnail, 'full-sized-image': data[idx].image, 'local-thumbnail-path': data[idx].downloaded_thumbnail_path, 'local-image-path': data[idx].downloaded_image_path}]
 	return jsonify({'data': response})
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", debug=True)
+	run_cron()
+	app.run(host="0.0.0.0", debug=True,use_reloader=False)
