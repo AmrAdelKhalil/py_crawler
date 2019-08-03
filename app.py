@@ -4,6 +4,7 @@ from config.db import *
 from models.videos import *
 from presistors.presistor import *
 from services.playlist_service import *
+from services.channel_service import *
 
 @app.route('/')
 def hello():
@@ -17,7 +18,12 @@ def set_videos_info_using_playlist():
 
 @app.route('/channel')
 def set_videos_info_using_channel():
-	return "here"
+	playlist_ids = ChannelService({'channelId': request.args.get('channel_id')}).get_playlists()
+	items = []
+	for idx in range(len(playlist_ids)):
+		items += PlaylistService({'playlistId': playlist_ids[idx]}).get_playlist_items()
+	Presistor(items).presist_data()
+	return 'Videos data have been fetched successfully!!!'
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", debug=True)
