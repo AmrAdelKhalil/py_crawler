@@ -3,6 +3,7 @@ from importers.crawler import *
 from config.db import *
 from models.videos import *
 from presistors.presistor import *
+from services.playlist_service import *
 
 @app.route('/')
 def hello():
@@ -10,20 +11,8 @@ def hello():
 
 @app.route('/playlist')
 def set_videos_info_using_playlist():
-	playlist_id = request.args.get('playlist_url')
-	payload = {'part': 'snippet', 'maxResults': 1}
-	payload.update({'playlistId': playlist_id})
-	items = []
-	while(True):
-		result = Crawler().videos_data_from_playlist(payload)
-		items += result['items']
-		break;
-		if (('nextPageToken' in result) == False):
-			break
-		else:
-			payload.update({'pageToken': result['nextPageToken']})
-
-	Presistor(items).presist_data(items)
+	items = PlaylistService({'playlistId': request.args.get('playlist_url')}).get_playlist_items()
+	Presistor(items).presist_data()
 	return 'Videos data have been fetched successfully!!!'
 
 @app.route('/channel')
