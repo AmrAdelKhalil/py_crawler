@@ -20,3 +20,13 @@ class Presistor:
 			db.session.add(new_record)
 		
 		db.session.commit()
+
+
+	# 	url = 'https://i.ytimg.com/vi/GU3JqoUDkjA/mqdefault.jpg'
+	# file_name = 'test'
+	# full_path = 'images/' + file_name + '.jpg'
+	# response = urllib2.urlopen(url)
+	# fh = open(full_path, 'w')
+	# fh.write(response.read())
+	# fh.close()
+	# 

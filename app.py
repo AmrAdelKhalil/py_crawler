@@ -6,6 +6,7 @@ from models.videos import *
 from presistors.presistor import *
 from services.playlist_service import *
 from services.channel_service import *
+import urllib2
 
 @app.route('/')
 def hello():
