@@ -1,4 +1,5 @@
 from flask import request
+from flask import jsonify
 from importers.crawler import *
 from config.db import *
 from models.videos import *
@@ -24,6 +25,14 @@ def set_videos_info_using_channel():
 		items += PlaylistService({'playlistId': playlist_ids[idx]}).get_playlist_items()
 	Presistor(items).presist_data()
 	return 'Videos data have been fetched successfully!!!'
+
+@app.route('/list_videos')
+def get_all_videos():
+	data = Videos.query.all()
+	response = []
+ 	for idx in range(len(data)):
+ 		response += [{'id': data[idx].id, 'title': data[idx].title, 'duration': data[idx].duration, 'views': data[idx].views, 'url': data[idx].video_url, 'tumbnail': data[idx].thumbnail, 'full-sized-image': data[idx].image}]
+	return jsonify({'data': response})
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", debug=True)
